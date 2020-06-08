@@ -8,28 +8,30 @@
         xmlns:col1="clr-namespace:System.Collections;assembly=System.Runtime.Extensions"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid HorizontalAlignment="Center" Width="800">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="26*"/>
-            <ColumnDefinition Width="747*"/>
-            <ColumnDefinition Width="27*"/>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="357*"/>
+            <ColumnDefinition Width="30*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="27*"/>
-            <RowDefinition Height="39*"/>
-            <RowDefinition Height="317*"/>
+            <RowDefinition Height="19*"/>
             <RowDefinition Height="47*"/>
+            <RowDefinition Height="297*"/>
+            <RowDefinition Height="67*"/>
         </Grid.RowDefinitions>
         <TextBlock HorizontalAlignment="Left" Text="Файл" TextWrapping="Wrap" VerticalAlignment="Center" Width="49" FontSize="18" Height="39" Grid.Column="1" Grid.Row="1"/>
-        <TextBox Grid.Column="1" Name="File" HorizontalAlignment="Left" Margin="54,0,0,0" Grid.Row="1" Text="Выберите файл" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Center" Width="545" Height="38"/>
-        <Button Content="Выбрать файл" Grid.Column="1" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Center" Height="39" Width="140" Grid.Row="1" Margin="607,0,0,0" Click="Button_Click"/>
-        <DataGrid Grid.Column="1" Grid.Row="2" Height="317" VerticalAlignment="Center" HorizontalAlignment="Left" Width="747" x:Name="INNGrid" AutoGenerateColumns="True" ItemsSource="{DynamicResource ResourceKey=dataINN}">
-            <DataGrid.Resources>
-                <col1:ArrayList x:Key="dataINN">
-                    <local:DataINN />
-                </col1:ArrayList>
-            </DataGrid.Resources>
+        <TextBox Grid.Column="1" Name="File" HorizontalAlignment="Left" Margin="54,0,0,0" Grid.Row="1" Text="Выберите файл" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Center" Width="488" Height="35"/>
+        <Button Content="Выбрать файл" Grid.Column="1" FontSize="18" VerticalAlignment="Center" Height="39" Grid.Row="1" Margin="547,0,0,0" Click="Button_Click" HorizontalAlignment="Left" Width="167"/>
+        <DataGrid Grid.Column="1" Grid.Row="2" Height="281" VerticalAlignment="Center" HorizontalAlignment="Center" Width="714" x:Name="INNGrid" AutoGenerateColumns="false">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ИНН" Binding="{Binding Path=INN}" />
+                <DataGridHyperlinkColumn Header="Компания" Binding="{Binding Path=Company}" />
+                <DataGridTextColumn Header="Руководитель" Binding="{Binding Path=Manager}" />
+                <DataGridTextColumn Header="Адресс" Binding="{Binding Path=Address}"/>
+            </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Собрать данные" Name="CollectData" Grid.Column="1" HorizontalAlignment="Left" Margin="0,317,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.RowSpan="2" Height="37" Width="157" Click="CollectData_Click"/>
+        <Button Content="Собрать данные" Name="CollectData" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Height="37" Width="157" Click="CollectData_Click" RenderTransformOrigin="0.522,0.096" Margin="0,10,0,0"/>
+        <Button Content="Сохранить данные в файл" Name="Serialization" Grid.Column="1" HorizontalAlignment="Left" Margin="565,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="37" Width="149" Click="Button_Click_1"/>
     </Grid>
 </Window>
